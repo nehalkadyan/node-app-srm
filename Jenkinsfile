@@ -2,15 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello Jenkins') {
+        stage('Checkout Test') {
             steps {
-                echo 'Jenkins pipeline is working!'
+                echo 'Repository connected successfully'
             }
         }
 
-        stage('Checkout Check') {
+        stage('Node Check') {
             steps {
-                echo 'Repository successfully connected.'
+                sh 'node --version'
+                sh 'npm --version'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
             }
         }
     }
